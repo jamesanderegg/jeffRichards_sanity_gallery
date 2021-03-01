@@ -30,7 +30,7 @@ const StyleGrid = styled.div`
 const CenterImage = styled.div`
   grid-row: 1;
   grid-column: 4 / 60;
-  margin-top: 3rem
+  margin-top: 3rem;
 `;
 const PortraitCard = styled.div`
   grid-row: 1;
@@ -89,7 +89,7 @@ const TextStyle = styled.p`
 `;
 export default function About({ data }) {
   const aboutPage = data.allSanityAboutPage.nodes[0];
- 
+
   return (
     <Wrapper>
       <TitleCard>
@@ -148,7 +148,9 @@ export default function About({ data }) {
         </DescriptionCard>
         <ExhibitionsCard>
           {aboutPage.exhibitions.map((item, index) => (
-            <ExhibitText key={`${item}-${index}`}>&#8226;{item.title} - {item.date} </ExhibitText>
+            <ExhibitText key={`${item}-${index}`}>
+              &#8226;{item.title} - {item.date}{" "}
+            </ExhibitText>
           ))}
         </ExhibitionsCard>
       </StyleGrid>

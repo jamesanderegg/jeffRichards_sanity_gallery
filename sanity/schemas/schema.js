@@ -10,11 +10,19 @@ import categories from './categories';
 import homePage from './homePage';
 import exhibtions from './exhibitions';
 import aboutPage from './aboutPage';
+import contactPage from './contactPage';
 
 export default createSchema({
   // We name our schema
   name: 'default',
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
-  types: schemaTypes.concat([paintings, categories, homePage, exhibtions, aboutPage]),
+  types: schemaTypes.concat([
+    paintings,
+    categories,
+    homePage,
+    exhibtions,
+    aboutPage,
+    contactPage,
+  ]),
 });
