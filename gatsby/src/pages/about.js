@@ -22,7 +22,6 @@ const Title = styled.h1`
   padding: 10px;
 `;
 const StyleGrid = styled.div`
-  border: 1px solid blue;
   display: grid;
   grid-template-columns: repeat(100, 1fr);
   grid-template-rows: 0.4fr 0.6fr;
