@@ -3,6 +3,7 @@ import React from "react";
 import Nav from "../components/Nav";
 import Img from "gatsby-image";
 import styled from "styled-components";
+import SEO from "../components/SEO";
 
 const Wrapper = styled.div`
   max-width: 1000px;
@@ -90,70 +91,76 @@ export default function About({ data }) {
   const aboutPage = data.allSanityAboutPage.nodes[0];
 
   return (
-    <Wrapper>
-      <TitleCard>
-        <Title>{aboutPage.title}</Title>
-      </TitleCard>
-      <StyleGrid>
-        <Nav />
-        <CenterImage>
-          <Img fluid={aboutPage.centerPainting[0].image.asset.fluid} />
-        </CenterImage>
-        <PortraitCard>
-          <PortraitStyle>
-            <ProtraitText>
-              Standing next to a portrait by Sharon Brown, from her series "The
-              Creators".
-            </ProtraitText>
-            <Img fluid={aboutPage.portrait[0].image.asset.fluid} />
-          </PortraitStyle>
-        </PortraitCard>
-        <LongImage>
-          <Img fluid={aboutPage.bottomPainting[0].image.asset.fluid} />
-        </LongImage>
-        <DescriptionCard>
-          <AboutTitle>Jeff Richards - Some of the Story</AboutTitle>
-          <TextStyle>
-            Standing at the abyss of existential despair and the prospect of a
-            mid-life crisis at the tender age of 35, Jeff Richards decided a 180
-            degree turn was in order - he sold his cabinetmaking business and
-            embarked on a lifelong dream of becoming an artist, taking 7 years
-            to complete a BA degree in Studio Art at San Francisco State
-            University and an MFA degree in Sculpture from the San Francisco Art
-            Institute. He then spent the next 7 years unlearning everything he’d
-            learned in art school, at which point he began the real work.
-          </TextStyle>
-          <TextStyle>
-            There were two major crossroads on that path through the labyrinth
-            of meaningful creativity. The first appeared when an artist friend
-            approached him with a box of industrial sewing thread spools,
-            thrusting it in his hands with the admonition “I’ve had these for 2
-            years and I don’t know what to do with them, you give it a try!”.
-            Being a sculptor, and having never sewn in his life, Richards
-            promptly placed the box on a shelf and forgot about it – until one
-            day a voice drew him back to the forgotten container, and he began
-            idly playing with the strange material, never expecting much to come
-            of it. 2 years later sewing thread was his primary medium, proving
-            once again the value of secondary processes.
-          </TextStyle>
-          <TextStyle>
-            The second crossroad followed a series of uncanny synchronicities -
-            some painful, some magical - over a period of 9 months which, woven
-            together into a web of fate, created a catalyst that manifested on
-            August 18, 2008. All of the years of work, of laborious exploration,
-            of deep mining within the psyche, suddenly alchemized and thrust him
-            into creative warp drive. Nothing has been the same since.
-          </TextStyle>
-        </DescriptionCard>
-        <ExhibitionsCard>
-          {aboutPage.exhibitions.map((item, index) => (
-            <ExhibitText key={`${item}-${index}`}>
-              &#8226;{item.title} - {item.date}{" "}
-            </ExhibitText>
-          ))}
-        </ExhibitionsCard>
-      </StyleGrid>
-    </Wrapper>
+    <>
+      <SEO title="About Page" />
+      <Wrapper>
+        <TitleCard>
+          <Title>{aboutPage.title}</Title>
+        </TitleCard>
+        <StyleGrid>
+          <Nav />
+          <CenterImage>
+            <Img fluid={aboutPage.centerPainting[0].image.asset.fluid} />
+          </CenterImage>
+          <PortraitCard>
+            <PortraitStyle>
+              <ProtraitText>
+                Standing next to a portrait by Sharon Brown, from her series
+                "The Creators".
+              </ProtraitText>
+              <Img fluid={aboutPage.portrait[0].image.asset.fluid} />
+            </PortraitStyle>
+          </PortraitCard>
+          <LongImage>
+            <Img fluid={aboutPage.bottomPainting[0].image.asset.fluid} />
+          </LongImage>
+          <DescriptionCard>
+            <AboutTitle>Jeff Richards - Some of the Story</AboutTitle>
+            <TextStyle>
+              Standing at the abyss of existential despair and the prospect of a
+              mid-life crisis at the tender age of 35, Jeff Richards decided a
+              180 degree turn was in order - he sold his cabinetmaking business
+              and embarked on a lifelong dream of becoming an artist, taking 7
+              years to complete a BA degree in Studio Art at San Francisco State
+              University and an MFA degree in Sculpture from the San Francisco
+              Art Institute. He then spent the next 7 years unlearning
+              everything he’d learned in art school, at which point he began the
+              real work.
+            </TextStyle>
+            <TextStyle>
+              There were two major crossroads on that path through the labyrinth
+              of meaningful creativity. The first appeared when an artist friend
+              approached him with a box of industrial sewing thread spools,
+              thrusting it in his hands with the admonition “I’ve had these for
+              2 years and I don’t know what to do with them, you give it a
+              try!”. Being a sculptor, and having never sewn in his life,
+              Richards promptly placed the box on a shelf and forgot about it –
+              until one day a voice drew him back to the forgotten container,
+              and he began idly playing with the strange material, never
+              expecting much to come of it. 2 years later sewing thread was his
+              primary medium, proving once again the value of secondary
+              processes.
+            </TextStyle>
+            <TextStyle>
+              The second crossroad followed a series of uncanny synchronicities
+              - some painful, some magical - over a period of 9 months which,
+              woven together into a web of fate, created a catalyst that
+              manifested on August 18, 2008. All of the years of work, of
+              laborious exploration, of deep mining within the psyche, suddenly
+              alchemized and thrust him into creative warp drive. Nothing has
+              been the same since.
+            </TextStyle>
+          </DescriptionCard>
+          <ExhibitionsCard>
+            {aboutPage.exhibitions.map((item, index) => (
+              <ExhibitText key={`${item}-${index}`}>
+                &#8226;{item.title} - {item.date}{" "}
+              </ExhibitText>
+            ))}
+          </ExhibitionsCard>
+        </StyleGrid>
+      </Wrapper>
+    </>
   );
 }
 export const query = graphql`

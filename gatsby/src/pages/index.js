@@ -1,9 +1,9 @@
-import { graphql } from 'gatsby';
-import React from 'react';
-import styled from 'styled-components';
-import Img from 'gatsby-image';
-import Nav from '../components/Nav';
-
+import { graphql } from "gatsby";
+import React from "react";
+import styled from "styled-components";
+import Img from "gatsby-image";
+import Nav from "../components/Nav";
+import SEO from "../components/SEO";
 const Wrapper = styled.div`
   max-width: 1000px;
   margin: auto;
@@ -91,54 +91,57 @@ const BottomImage = styled.div`
 export default function HomePage({ data }) {
   console.log(data.homepage.nodes[0]);
   return (
-    <Wrapper>
-      <TopGrid>
-        <TitleCard>
-          <Title>{data.homepage.nodes[0].title}</Title>
-          <SubTitle>{data.homepage.nodes[0].subTitle}</SubTitle>
-        </TitleCard>
-        <TitleImage>
-          <Img fluid={data.homepage.nodes[0].topRight[0].image.asset.fluid} />
-        </TitleImage>
-      </TopGrid>
-      <SecondRow>
-        <NavStyle>
-          <Nav />
-        </NavStyle>
-        <CenterImage>
-          <Img
-            fluid={data.homepage.nodes[0].centerPainting[0].image.asset.fluid}
-          />
-        </CenterImage>
-        <ImageDesctription>
-          <TextStyle>{data.homepage.nodes[0].centerDescription}</TextStyle>
-        </ImageDesctription>
-      </SecondRow>
-      <ThirdRow>
-        <MainContent>
-          <TextStyle>
-            Welcome to Hexagonart, the internet home of Jeff Richards, a Denver
-            , Colorado based Visual Artist.
-          </TextStyle>
-          <TextStyle>
-            Inside you'll find galleries of my art and a blog where I write
-            about the thoughts, reveries and speculations that inform my work.
-            In the "About Me" page I list current and future exhibitions and
-            events I'll be taking part in.
-          </TextStyle>
-          <TextStyle>
-            f you have further interest in my work, or care to comment or
-            respond to my blog, please email me at:
-          </TextStyle>
-          <TextStyle>hexagonart@gmail.com</TextStyle>
-        </MainContent>
-        <BottomImage>
-          <Img
-            fluid={data.homepage.nodes[0].bottomPainting[0].image.asset.fluid}
-          />
-        </BottomImage>
-      </ThirdRow>
-    </Wrapper>
+    <>
+      <SEO title="Home Page" />
+      <Wrapper>
+        <TopGrid>
+          <TitleCard>
+            <Title>{data.homepage.nodes[0].title}</Title>
+            <SubTitle>{data.homepage.nodes[0].subTitle}</SubTitle>
+          </TitleCard>
+          <TitleImage>
+            <Img fluid={data.homepage.nodes[0].topRight[0].image.asset.fluid} />
+          </TitleImage>
+        </TopGrid>
+        <SecondRow>
+          <NavStyle>
+            <Nav />
+          </NavStyle>
+          <CenterImage>
+            <Img
+              fluid={data.homepage.nodes[0].centerPainting[0].image.asset.fluid}
+            />
+          </CenterImage>
+          <ImageDesctription>
+            <TextStyle>{data.homepage.nodes[0].centerDescription}</TextStyle>
+          </ImageDesctription>
+        </SecondRow>
+        <ThirdRow>
+          <MainContent>
+            <TextStyle>
+              Welcome to Hexagonart, the internet home of Jeff Richards, a
+              Denver , Colorado based Visual Artist.
+            </TextStyle>
+            <TextStyle>
+              Inside you'll find galleries of my art and a blog where I write
+              about the thoughts, reveries and speculations that inform my work.
+              In the "About Me" page I list current and future exhibitions and
+              events I'll be taking part in.
+            </TextStyle>
+            <TextStyle>
+              f you have further interest in my work, or care to comment or
+              respond to my blog, please email me at:
+            </TextStyle>
+            <TextStyle>hexagonart@gmail.com</TextStyle>
+          </MainContent>
+          <BottomImage>
+            <Img
+              fluid={data.homepage.nodes[0].bottomPainting[0].image.asset.fluid}
+            />
+          </BottomImage>
+        </ThirdRow>
+      </Wrapper>
+    </>
   );
 }
 export const query = graphql`

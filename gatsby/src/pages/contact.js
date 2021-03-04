@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Img from "gatsby-image";
 import styled from "styled-components";
 import Nav from "../components/Nav";
-
+import SEO from "../components/SEO";
 const Wrapper = styled.div`
   max-width: 900px;
   margin: auto;
@@ -50,7 +50,7 @@ const FormCard = styled.div`
   max-height: 550px;
   display: grid;
   grid-template-columns: 1fr 0.8fr;
- 
+
   margin: 40px 0;
   color: var(--grey);
   z-index: 1;
@@ -172,99 +172,102 @@ export default function Contact({ data }) {
   };
   console.log(contactPage);
   return (
-    <Wrapper>
-      <TitleCard>Contact Jeff</TitleCard>
-      <TopImage>
-        <Img fluid={contactPage.topPainting[0].image.asset.fluid} />
-      </TopImage>
-      <NavStyle>
-        <Nav />
-      </NavStyle>
-      <FormCard>
-        <FormGrid>
-          <form
-            onSubmit={(e) => checkForm(e)}
-            style={{
-              alignContent: "center",
-              textAlign: "center",
-              margin: "auto",
-            }}
-          >
-            <FormTitle>Send Jeff an email</FormTitle>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={values.name}
-              placeholder="Enter your name"
-              style={{ width: "100%" }}
-              onChange={updateValue}
-            />
-            <br />
-            <br />
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Enter your email"
-              value={values.email}
-              style={{ width: "100%" }}
-              onChange={updateValue}
-            />
-            <br />
-            <br />
-            <input
-              type="text"
-              name="subject"
-              id="subject"
-              placeholder="Enter the subject"
-              value={values.subject}
-              style={{ width: "100%" }}
-              onChange={updateValue}
-            />
-            <br />
-            <input
-              type="mapleSyrup"
-              name="mapleSyrup"
-              id="mapleSyrup"
-              value={values.mapleSyrup}
-              onChange={updateValue}
-              className="mapleSyrup"
-              style={{ display: "none" }}
-            />
-            <br />
-            <textarea
-              name="message"
-              id="message"
-              placeholder="Type your Message here."
-              rows="8"
-              value={values.message}
-              style={{ width: "100%" }}
-              onChange={updateValue}
-            />
-            <br />
-            <FormButton className="submit-button" type="submit">
-              Send
-            </FormButton>
-          </form>
-        </FormGrid>
-        <ContactInformation>
-          <p>{contactPage.name}</p>
-          <p>{contactPage.email}</p>
-          <p>{contactPage.address}</p>
-          <p>{contactPage.phoneNumber}</p>
-          {formSent ? <h4>Thank you, your message has been sent!</h4> : null}
-          {errors.length !== 0
-            ? errors.map((error, i) => (
-                <p key={i}>Please fill in the {error} field.</p>
-              ))
-            : null}
-        </ContactInformation>
-      </FormCard>
-      <BottomImage>
-        <Img fluid={contactPage.bottomPainting[0].image.asset.fluid} />
-      </BottomImage>
-    </Wrapper>
+    <>
+      <SEO title="Contact Page" />
+      <Wrapper>
+        <TitleCard>Contact Jeff</TitleCard>
+        <TopImage>
+          <Img fluid={contactPage.topPainting[0].image.asset.fluid} />
+        </TopImage>
+        <NavStyle>
+          <Nav />
+        </NavStyle>
+        <FormCard>
+          <FormGrid>
+            <form
+              onSubmit={(e) => checkForm(e)}
+              style={{
+                alignContent: "center",
+                textAlign: "center",
+                margin: "auto",
+              }}
+            >
+              <FormTitle>Send Jeff an email</FormTitle>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={values.name}
+                placeholder="Enter your name"
+                style={{ width: "100%" }}
+                onChange={updateValue}
+              />
+              <br />
+              <br />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                value={values.email}
+                style={{ width: "100%" }}
+                onChange={updateValue}
+              />
+              <br />
+              <br />
+              <input
+                type="text"
+                name="subject"
+                id="subject"
+                placeholder="Enter the subject"
+                value={values.subject}
+                style={{ width: "100%" }}
+                onChange={updateValue}
+              />
+              <br />
+              <input
+                type="mapleSyrup"
+                name="mapleSyrup"
+                id="mapleSyrup"
+                value={values.mapleSyrup}
+                onChange={updateValue}
+                className="mapleSyrup"
+                style={{ display: "none" }}
+              />
+              <br />
+              <textarea
+                name="message"
+                id="message"
+                placeholder="Type your Message here."
+                rows="8"
+                value={values.message}
+                style={{ width: "100%" }}
+                onChange={updateValue}
+              />
+              <br />
+              <FormButton className="submit-button" type="submit">
+                Send
+              </FormButton>
+            </form>
+          </FormGrid>
+          <ContactInformation>
+            <p>{contactPage.name}</p>
+            <p>{contactPage.email}</p>
+            <p>{contactPage.address}</p>
+            <p>{contactPage.phoneNumber}</p>
+            {formSent ? <h4>Thank you, your message has been sent!</h4> : null}
+            {errors.length !== 0
+              ? errors.map((error, i) => (
+                  <p key={i}>Please fill in the {error} field.</p>
+                ))
+              : null}
+          </ContactInformation>
+        </FormCard>
+        <BottomImage>
+          <Img fluid={contactPage.bottomPainting[0].image.asset.fluid} />
+        </BottomImage>
+      </Wrapper>
+    </>
   );
 }
 

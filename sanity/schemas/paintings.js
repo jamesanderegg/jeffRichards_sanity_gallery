@@ -39,7 +39,7 @@ export default {
     },
     {
       name: 'image',
-      title: 'Project Screenshot',
+      title: 'Upload painting image',
       type: 'image',
       options: {
         hotspot: true,

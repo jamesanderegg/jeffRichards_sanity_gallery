@@ -13,5 +13,11 @@ export default {
       title: 'Description',
       type: 'text',
     },
+    {
+      name: 'categoryImage',
+      title: 'Category Image',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'paintings' }] }],
+    },
   ],
 };
