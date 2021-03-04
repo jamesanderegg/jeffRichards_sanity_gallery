@@ -237,7 +237,7 @@ export default function Contact({ data }) {
               name="message"
               id="message"
               placeholder="Type your Message here."
-              rows="10"
+              rows="8"
               value={values.message}
               style={{ width: "100%" }}
               onChange={updateValue}
