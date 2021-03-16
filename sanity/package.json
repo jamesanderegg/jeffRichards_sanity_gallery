@@ -1,10 +1,10 @@
 {
-  "name": "slicks-slices-backend",
+  "name": "hexagonart-backend",
   "private": true,
   "version": "1.0.0",
   "description": "",
   "main": "package.json",
-  "author": "Wes Bos <wesbos@gmail.com>",
+  "author": "James Anderegg <jamesanderegg@jamesanderegg.com>",
   "license": "UNLICENSED",
   "scripts": {
     "lint": "eslint .",

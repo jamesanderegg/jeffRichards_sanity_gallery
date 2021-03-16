@@ -6,6 +6,7 @@ import Categories from "../components/Categories";
 import SEO from "../components/SEO";
 import styled from "styled-components";
 import Img from "gatsby-image";
+import Backdrop from "../components/Backdrop/Backdrop";
 
 const TopGrid = styled.div`
   display: grid;
@@ -15,9 +16,7 @@ const TopGrid = styled.div`
   margin: auto;
   margin-top: 20px;
 `;
-const NavStyle = styled.div`
-  
-`;
+const NavStyle = styled.div``;
 const TitleCard = styled.div`
   color: var(--grey);
   margin: 20px;
@@ -65,9 +64,17 @@ const PaintingsStyle = styled.div`
 
 export default function Gallery({ data }) {
   const [category, setCategory] = useState("New Work");
+  const [isOpen, setIsOpen] = useState(false);
 
-  //sort gallery
-  //function passed to categories component
+  // if painting clicked on set to true
+  const clickPainting = () => {
+    setIsOpen((prevState) => {
+      return !prevState;
+    });
+  };
+
+  // sort gallery
+  // function passed to categories component
   const clickCategory = (e) => {
     e.preventDefault();
     if (!e.target.id) {
@@ -96,10 +103,15 @@ export default function Gallery({ data }) {
     }
   });
   // console.log(categories, categoryImages);
-
+  let backdrop;
+  if (isOpen) {
+    backdrop = <Backdrop />;
+  }
   return (
     <>
       <SEO title="Gallery Page" />
+      {backdrop}
+
       <TopGrid>
         <NavStyle>
           <Nav />
@@ -136,7 +148,11 @@ export default function Gallery({ data }) {
         />
       </CategoryStyle>
       <PaintingsStyle>
-        <PaintingList paintings={sortedPaintings} />
+        <PaintingList
+          paintings={sortedPaintings}
+          clickPainting={clickPainting}
+          isOpen={isOpen}
+        />
       </PaintingsStyle>
     </>
   );
@@ -155,7 +171,7 @@ export const query = graphql`
         }
         image {
           asset {
-            fluid(maxWidth: 1200) {
+            fluid(maxWidth: 2400) {
               ...GatsbySanityImageFluid
             }
           }

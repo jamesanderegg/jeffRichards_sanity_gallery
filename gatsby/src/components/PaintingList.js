@@ -12,13 +12,18 @@ const GalleryGrid = styled.div`
   position: relative;
 `;
 
-export default function PaintingList({ paintings }) {
+export default function PaintingList({ paintings, isOpen, clickPainting }) {
   return (
     <GalleryGrid>
       {paintings.map((painting) => (
         <Painting
+          title={painting.title}
+          size={painting.size}
+          slug={painting.slug}
           fluid={painting.image.asset.fluid}
           key={painting.slug.current}
+          isOpen={isOpen}
+          clickPainting={clickPainting}
         />
       ))}
     </GalleryGrid>
@@ -31,16 +36,16 @@ const Tile = styled.div`
   overflow: hidden;
   width: 18vw;
   height: 18vw;
+  &:hover {
+    box-shadow: -10px 26px 8px rgba(0, 0, 0, 0.25);
+  }
   img {
     width: 100%;
-    transition: transform 500ms ease;
-    &:hover {
-      transform: scale(1.1);
-    }
+    transition: transform 2ms ease;
   }
 `;
 
-function Painting({ fluid }) {
+function Painting({ title, size, slug, fluid, isOpen, clickPainting }) {
   const [open, setOpen] = useState(false);
 
   let clickStyles = {};
@@ -48,16 +53,14 @@ function Painting({ fluid }) {
   if (open) {
     clickStyles = {
       width: "62vw",
-      height: "62vw",
       position: "absolute",
-      top: "50%",
       left: "50%",
       margin: "0",
-      marginTop: "-31vw",
+      marginTop: "-50vw",
       marginLeft: "-31vw",
       boxShadow: "0 0 40px 5px rgba(0, 0, 0, 0.3)",
       transform: "none",
-      zIndex: "1",
+      zIndex: "5",
     };
   } else {
     clickStyles = {
@@ -65,19 +68,49 @@ function Painting({ fluid }) {
       height: "18vw",
     };
   }
+  let textStyles = {};
+
+  if (open) {
+    textStyles = {
+      maxWidth: "90px",
+      color: "white",
+      position: "absolute",
+      left: "5%",
+      top: "0%",
+      zIndex: "6",
+    };
+  } else {
+    textStyles = {
+      display: "none",
+    };
+  }
 
   const clickHandler = (e) => {
     e.preventDefault();
-    console.log("hi");
     if (open === false) {
+      clickPainting();
       setOpen(true);
     } else {
+      clickPainting();
       setOpen(false);
     }
   };
+
+  let textInformation;
+  if (isOpen) {
+    textInformation = (
+      <div style={textStyles}>
+        <h1>{title}</h1>
+        <h2>{size}</h2>
+      </div>
+    );
+  }
   return (
-    <Tile onClick={clickHandler}>
-      <Img fluid={fluid} style={clickStyles} />
-    </Tile>
+    <>
+      <Tile onClick={clickHandler} id={slug} title={title}>
+        <Img fluid={fluid} style={clickStyles} />
+        {textInformation}
+      </Tile>
+    </>
   );
 }

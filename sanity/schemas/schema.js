@@ -11,6 +11,7 @@ import homePage from './homePage';
 import exhibtions from './exhibitions';
 import aboutPage from './aboutPage';
 import contactPage from './contactPage';
+import blog from './blog';
 
 export default createSchema({
   // We name our schema
@@ -24,5 +25,6 @@ export default createSchema({
     exhibtions,
     aboutPage,
     contactPage,
+    blog,
   ]),
 });

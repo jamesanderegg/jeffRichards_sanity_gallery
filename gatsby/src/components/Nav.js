@@ -51,7 +51,7 @@ export default function Nav() {
             <ButtonText>Gallery</ButtonText>
           </ButtonStyle>
         </StyledLink>
-        <StyledLink to="/gallery">
+        <StyledLink to="/blog">
           <ButtonStyle>
             <ButtonText>Blog</ButtonText>
           </ButtonStyle>
